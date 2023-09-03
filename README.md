@@ -2,7 +2,7 @@
 This project was generated with [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 
 ## Description
-This project provides a simple Url shortening service as a webapi. 
+This project provides a simple Url shortening service as a webapi. Basically you can use this project to get more shorter urls.
 
 ## Install and run the project
 
