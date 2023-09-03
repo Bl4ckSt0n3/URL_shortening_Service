@@ -11,12 +11,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddScoped<IShortener, ShortenerService>();
+
 builder.Services.AddDbContext<UrlDataDbContext>(o => { o.UseSqlite($"Data Source=./UrlShortenDB.db"); });
 
-// builder.Services.AddDbContext<UrlDataDbContext>(options => {
-//     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-// }, ServiceLifetime.Transient);
 
 var app = builder.Build();
 
