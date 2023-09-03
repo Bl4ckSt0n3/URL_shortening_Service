@@ -75,6 +75,25 @@ namespace URL_shortening_Service.Services
             return response;
         }
 
+        public async Task<ServiceResponseDto<List<ShortenedUrl>>> GetAllUrls()
+        {
+            var response = new ServiceResponseDto<List<ShortenedUrl>>();
+            try
+            {
+                var urls = await _dbContext.ShortenedUrl.ToListAsync();
+                response.Data = urls;
+                response.Success = true;
+                
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                response.Data = null;
+                response.Success = false;
+            }
+            return response;
+        }
+
         private string GenerateUrlCode() 
         {
             var urlCodeChars = new char[MaximumCharacterLength];

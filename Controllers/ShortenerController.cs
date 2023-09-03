@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using URL_shortening_Service.Models.DTOs;
+using URL_shortening_Service.Models.Entities;
 using URL_shortening_Service.Services.Interfaces;
 
 namespace URL_shortening_Service.Controllers;
@@ -51,6 +52,12 @@ public class ShortenerController : ControllerBase
         }
         var response = await _shortenerService.GetLongUrl(requestUrlData.Url);
         
+        return response == null ? NotFound() : Ok(response);
+    }
+    [HttpGet("getAll")]
+    public async Task<ActionResult<ServiceResponseDto<List<ShortenedUrl>>>> GetAllUrls()
+    {
+        var response = await _shortenerService.GetAllUrls();
         return response == null ? NotFound() : Ok(response);
     }
 }
