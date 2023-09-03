@@ -23,8 +23,7 @@ public class ShortenerController : ControllerBase
     [HttpGet("{codeId}")]
     public async Task<IActionResult> RedirectTo(string codeId)
     {
-        var r = this.Request.GetDisplayUrl();
-        Console.WriteLine(r);
+        //var r = this.Request.GetDisplayUrl();
         var url = await _shortenerService.RedirectUrl(codeId);
 
         return url.Data == null ? NotFound() : Redirect(url.Data);
@@ -37,7 +36,7 @@ public class ShortenerController : ControllerBase
             return BadRequest("URL is invalid!");
         }
         var uri = new Uri(requestUrlData.Url);
-        var shortUrl = $"http://{uri.Host}/"; //$"{this.Request.Scheme}://{this.Request.Host}/api/";
+        var shortUrl =  $"{this.Request.Scheme}://{this.Request.Host}/api/Shortener/"; // $"http://{uri.Host}/";
         var response = await _shortenerService.AddUrl(requestUrlData.Url, shortUrl);
 
         return response == null ? NotFound() : Ok(response);
