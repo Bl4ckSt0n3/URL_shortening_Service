@@ -7,10 +7,11 @@ Once you send a url throughout post method you are going to see the response as 
 on the browser this will redirect you to the original url.
 
 Additionally, database is used as an embedded db. SQLite is used so you can see the database file under the root direction of the project.
-Note: No need to execute any migration process. If you need you can run the following commands on the terminal.
 
-`dotnet ef migrations add "MyFirstMigration"`
-`dotnet ef database update`
+* Note: No need to execute any migration process. If you need you can run the following commands on the terminal.
+
+ - `dotnet ef migrations add "MyFirstMigration"`
+ - `dotnet ef database update`
 
 ## Install and run the project
 
